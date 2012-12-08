@@ -1,4 +1,7 @@
 <?php
+
+namespace Cloudfiles;
+
 /**
  * This is an HTTP client class for Cloud Files.  It uses PHP's cURL module
  * to handle the actual HTTP request/response.  This is NOT a generic HTTP
@@ -27,7 +30,6 @@
 
 /**
  */
-require_once("cloudfiles_exceptions.php");
 
 define("PHP_CF_VERSION", "1.7.10");
 define("USER_AGENT", sprintf("PHP-CloudFiles/%s", PHP_CF_VERSION));
@@ -153,7 +155,7 @@ class CF_Http
         $this->_user_write_progress_callback_func = NULL;
         $this->_write_callback_type = NULL;
         $this->_text_list = array();
-	$this->_return_list = NULL;
+        $this->_return_list = NULL;
         $this->_account_container_count = 0;
         $this->_account_bytes_used = 0;
         $this->_container_object_count = 0;
@@ -808,7 +810,7 @@ class CF_Http
     #
     function put_object(&$obj, &$fp)
     {
-        if (!is_object($obj) || get_class($obj) != "CF_Object") {
+        if (!is_object($obj) || get_class($obj) != "Cloudfiles\CF_Object") {
             throw new SyntaxException(
                 "Method argument is not a valid CF_Object.");
         }
@@ -907,7 +909,7 @@ class CF_Http
     #
     function head_object(&$obj)
     {
-        if (!is_object($obj) || get_class($obj) != "CF_Object") {
+        if (!is_object($obj) || get_class($obj) != "Cloudfiles\CF_Object") {
             throw new SyntaxException(
                 "Method argument is not a valid CF_Object.");
         }
